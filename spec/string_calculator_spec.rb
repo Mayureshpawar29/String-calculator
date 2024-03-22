@@ -71,5 +71,21 @@ RSpec.describe StringCalculatorController, type: :controller do
         expect(response.parsed_body).to eql(12)
       end
     end
+
+    context "given an large number of string -1,-2,3,-4 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "-1,-2,3,-4" }
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.parsed_body['error']).to eq("negative numbers not allowed -1,-2,-4")
+      end
+    end
+
+    context "given an large number of string //;\n-1;-2;3;-4 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "//;\n-1;-2;3;-4" }
+        expect(response).to have_http_status(:unprocessable_entity)
+        expect(response.parsed_body['error']).to eq("negative numbers not allowed -1,-2,-4")
+      end
+    end
   end
 end
