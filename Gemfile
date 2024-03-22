@@ -22,9 +22,14 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# rspec gem
 gem 'rspec-rails', '~> 6.0.0'
 
+# debugging gem
 gem 'pry'
+
+# test coverage gem
+gem 'simplecov'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'

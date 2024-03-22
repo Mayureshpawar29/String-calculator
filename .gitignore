@@ -7,6 +7,9 @@
 # Ignore bundler config.
 /.bundle
 
+#ignore rspec coverage files
+/coverage/*
+
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-*
