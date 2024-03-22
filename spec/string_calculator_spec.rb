@@ -50,5 +50,26 @@ RSpec.describe StringCalculatorController, type: :controller do
         expect(response.parsed_body).to eql(1)
       end
     end
+
+    context "given an large number of string //;\n1;2 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "//;\n1;2" }
+        expect(response.parsed_body).to eql(3)
+      end
+    end
+
+    context "given an large number of string //;\n1;2 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "//;\n1;2" }
+        expect(response.parsed_body).to eql(3)
+      end
+    end
+
+    context "given an large number of string //;\n1;2 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "//-\n3-4-5" }
+        expect(response.parsed_body).to eql(12)
+      end
+    end
   end
 end
