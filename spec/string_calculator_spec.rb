@@ -16,10 +16,17 @@ RSpec.describe StringCalculatorController, type: :controller do
       end
     end
 
-    context "given an string 1,2 and empty string" do
+    context "given an string 1,2 " do
       it "returns sum of the numbers" do
         get :add, params: { numbers: "1, 2" }
         expect(response.parsed_body).to eql(3)
+      end
+    end
+
+    context "given an large number of string 1,2,3,4,5,6 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "1,2,3,4,5,6" }
+        expect(response.parsed_body).to eql(21)
       end
     end
   end
