@@ -24,6 +24,8 @@ gem 'jbuilder', '~> 2.7'
 
 gem 'rspec-rails', '~> 6.0.0'
 
+gem 'pry'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
