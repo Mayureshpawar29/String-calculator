@@ -23,6 +23,13 @@ RSpec.describe StringCalculatorController, type: :controller do
       end
     end
 
+    context "given an large number of string 1,2,3000,4000,5,6 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "1,2,3000,4000,5,6" }
+        expect(response.parsed_body).to eql(14)
+      end
+    end
+
     context "given an large number of string 1,2,3,4,5,6 " do
       it "returns sum of the numbers" do
         get :add, params: { numbers: "1,2,3,4,5,6" }
@@ -58,6 +65,13 @@ RSpec.describe StringCalculatorController, type: :controller do
       end
     end
 
+    context "given an large number of string //[***]\n1***2***3 " do
+      it "returns sum of the numbers" do
+        get :add, params: { numbers: "//[***]\n1***2***3" }
+        expect(response.parsed_body).to eql(6)
+      end
+    end
+
     context "given an large number of string //;\n1;2 " do
       it "returns sum of the numbers" do
         get :add, params: { numbers: "//;\n1;2" }
@@ -73,7 +87,7 @@ RSpec.describe StringCalculatorController, type: :controller do
     end
 
     context "given an large number of string -1,-2,3,-4 " do
-      it "returns sum of the numbers" do
+      it "returns Error for negative numbers" do
         get :add, params: { numbers: "-1,-2,3,-4" }
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.parsed_body['error']).to eq("negative numbers not allowed -1,-2,-4")
@@ -81,7 +95,7 @@ RSpec.describe StringCalculatorController, type: :controller do
     end
 
     context "given an large number of string //;\n-1;-2;3;-4 " do
-      it "returns sum of the numbers" do
+      it "returns Error for negative numbers" do
         get :add, params: { numbers: "//;\n-1;-2;3;-4" }
         expect(response).to have_http_status(:unprocessable_entity)
         expect(response.parsed_body['error']).to eq("negative numbers not allowed -1,-2,-4")
