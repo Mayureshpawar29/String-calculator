@@ -1,6 +1,7 @@
 class StringCalculatorController < ApplicationController
   def add
-    #TBW
-    render json: 0
+    numbers = params[:numbers]
+
+    render json: numbers.split(',').map(&:to_i).sum
   end
 end
